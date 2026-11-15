@@ -3,7 +3,8 @@ import z from '@deepseek-ai/schemastery';
 import { LlmError, RetryPolicySchema, resolveRetryPolicy } from '@deepseek-ai/dsh-llm';
 
 export const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
-export const LEVELS = ['minimal', 'low', 'medium', 'high', 'xhigh'];
+import { LEVELS, knownLevels } from './thinking-levels.js';
+export { LEVELS, knownLevels };
 export const DEFAULT_MODELS = [
   { id: 'gemini-3.1-pro-preview', name: 'Gemini 3.1 Pro', contextWindow: 1048576 },
   { id: 'gemini-3-flash-preview', name: 'Gemini 3 Flash', contextWindow: 1048576 },
@@ -55,14 +56,6 @@ export function modelId(value) {
   return id;
 }
 
-// Conservative fallback for future models. Explicit per-model metadata takes precedence.
-export function knownLevels(id) {
-  if (/^gemini-3-pro(?:-|$)/.test(id)) return ['low', 'high'];
-  if (/^gemini-(?:3\.1-pro|3\.[78]-flash|4-(?:carbon|argon))(?:-|$)/.test(id)) return ['low', 'medium', 'high'];
-  if (/^gemini-4-hydrogen(?:-|$)/.test(id)) return ['low', 'medium', 'high', 'xhigh'];
-  if (/^gemini-(?:3-flash|3\.1-flash-lite|3\.5-flash(?:-lite)?|3\.6-flash)(?:-|$)/.test(id)) return ['minimal', 'low', 'medium', 'high'];
-  return ['low', 'high'];
-}
 
 function positive(value, name) {
   if (value !== undefined && (!Number.isSafeInteger(value) || value <= 0)) invalid(`${name} must be a positive integer.`);

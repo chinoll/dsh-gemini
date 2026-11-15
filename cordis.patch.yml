@@ -3,3 +3,8 @@
       name: dsh-gemini
       config:
         googleSearch: true
+
+# Reuse DSH's Models section with the native Gemini editor compatibility patch.
+# Disabling the stock registrant prevents duplicate sections; bundle removal restores it.
+- id: ui-settings-models
+  disabled: true
