@@ -2,7 +2,7 @@
 
 面向 **Gemini 3 及后续模型**的 DSH 原生适配器，直接调用 Gemini `streamGenerateContent` API，支持思考强度与内置 Google 搜索。使用 **GPL-3.0-only**，完整条款见 [LICENSE](LICENSE)。
 
-验证版本：DSH **0.2.2-rc.1**、Cordis 4.1、Node.js 24。peer dependencies 固定到已验证的 DSH 版本；没有宣称兼容旧版 DSH。
+验证版本：DSH **0.2.2-rc.1 / 0.2.2-rc.3**、Cordis 4.1、Node.js 24。兼容范围为 `>=0.2.2-rc.1 <0.2.3-0`；开发依赖固定到 rc.3，避免精确 peer 版本阻止同系列宿主安装。
 
 ## 原有 UI
 
@@ -28,10 +28,10 @@ npm pack
 在已有 DSH 环境安装生成的包：
 
 ```sh
-dsh plugin --profile web add /absolute/path/dsh-gemini-0.1.0.tgz
+dsh plugin --profile web add /absolute/path/dsh-gemini-0.1.1.tgz
 ```
 
-如果没有全局 `dsh`，可在已有的 DSH npm 项目里执行 `npm exec -- dsh plugin --profile web add /absolute/path/dsh-gemini-0.1.0.tgz`。插件管理器需要 pnpm 位于 PATH 中。安装包带有 `cordis.patch.yml`，会挂载 `llm-google-native`。
+如果没有全局 `dsh`，可在已有的 DSH npm 项目里执行 `npm exec -- dsh plugin --profile web add /absolute/path/dsh-gemini-0.1.1.tgz`。插件管理器需要 pnpm 位于 PATH 中。安装包带有 `cordis.patch.yml`，会挂载 `llm-google-native`。
 
 在 DSH 凭据服务中保存 `GEMINI_API_KEY`，或在启动 DSH 前设置同名环境变量，再重启对应 profile。然后在原有模型选择器中选择 **Google Gemini (Native)** 下的模型。未配置凭据时，适配器保留配置入口，但不会向可用模型列表添加不可调用的模型。
 

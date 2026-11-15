@@ -1,11 +1,12 @@
 {
   "name": "dsh-gemini",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native Gemini 3+ adapter for DeepSeek Harness with thinking levels and Google Search grounding",
   "type": "module",
   "license": "GPL-3.0-only",
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=24.0.0",
+    "dsh": ">=0.2.2-rc.1 <0.2.3-0"
   },
   "main": "src/index.js",
   "exports": {
@@ -34,10 +35,10 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "~4.1.0",
-    "@deepseek-ai/dsh-llm": "0.2.2-rc.1",
-    "@deepseek-ai/dsh-credentials": "0.2.2-rc.1",
-    "@deepseek-ai/dsh-launch-environment": "0.2.2-rc.1",
-    "@deepseek-ai/dsh-attachment": "0.2.2-rc.1"
+    "@deepseek-ai/dsh-llm": ">=0.2.2-rc.1 <0.2.3-0",
+    "@deepseek-ai/dsh-credentials": ">=0.2.2-rc.1 <0.2.3-0",
+    "@deepseek-ai/dsh-launch-environment": ">=0.2.2-rc.1 <0.2.3-0",
+    "@deepseek-ai/dsh-attachment": ">=0.2.2-rc.1 <0.2.3-0"
   },
   "repository": {
     "type": "git",
@@ -46,5 +47,11 @@
   "homepage": "https://github.com/chinoll/dsh-gemini#readme",
   "bugs": {
     "url": "https://github.com/chinoll/dsh-gemini/issues"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-llm": "0.2.2-rc.3",
+    "@deepseek-ai/dsh-credentials": "0.2.2-rc.3",
+    "@deepseek-ai/dsh-launch-environment": "0.2.2-rc.3",
+    "@deepseek-ai/dsh-attachment": "0.2.2-rc.3"
   }
 }
