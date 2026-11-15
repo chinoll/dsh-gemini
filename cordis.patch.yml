@@ -1,0 +1,5 @@
+- insert:
+    - id: llm-google-native
+      name: dsh-gemini
+      config:
+        googleSearch: true

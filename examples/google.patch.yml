@@ -1,0 +1,17 @@
+# 已通过 bundle 安装后，使用此 patch 覆盖同一个插件项。
+# GEMINI_API_KEY 是凭据引用／环境变量名；不要把真实密钥写进 patch。
+- id: llm-google-native
+  config:
+    apiKeyEnv: GEMINI_API_KEY
+    baseURL: https://generativelanguage.googleapis.com/v1beta
+    googleSearch: true
+    includeThoughts: true
+    models:
+      - id: gemini-3.1-pro-preview
+        name: Gemini 3.1 Pro
+        contextWindow: 1048576
+        reasoning: high
+      - id: gemini-3-flash-preview
+        name: Gemini 3 Flash
+        contextWindow: 1048576
+        reasoning: medium
